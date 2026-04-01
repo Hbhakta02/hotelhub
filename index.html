@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HotelHub | Login</title>
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+<body class="login-page">
+  <main class="login-shell">
+    <section class="login-panel" aria-labelledby="loginTitle">
+      <div class="login-brand">
+        <span class="login-brand__eyebrow">Reservation System</span>
+        <h1 id="loginTitle">HotelHub</h1>
+        <p>Sign in to access the front desk dashboard.</p>
+      </div>
+
+      <form id="loginForm" class="login-form">
+        <div class="login-field">
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" autocomplete="username" />
+        </div>
+
+        <div class="login-field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" />
+        </div>
+
+        <button class="login-submit" type="submit">Log In</button>
+      </form>
+
+      <p id="loginFeedback" class="login-feedback hidden" role="alert" aria-live="assertive"></p>
+
+      <div class="login-hint">
+        <span>Username: <strong>admin</strong></span>
+        <span>Password: <strong>password</strong></span>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/index.js"></script>
+</body>
+</html>

@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const roomRateStorageKey = "hotelhub_room_rates";
   const guestStorageKey = "hotelhub_guests";
   const themeStorageKey = "hotelhub-theme";
+  const authStorageKey = "hotelhub-authenticated";
   const defaultRoomRates = {
     "NS Q": 129,
     "NS QQ": 129,
@@ -13,6 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const currentPage = window.location.pathname.split("/").pop().toLowerCase() || "dashboard.html";
+  const isAuthenticated = localStorage.getItem(authStorageKey) === "true";
+
+  if (!isAuthenticated) {
+    window.location.replace("index.html");
+    return;
+  }
 
   const navItems = [
     { href: "dashboard.html", label: "Dashboard" },
@@ -79,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navbarThemeToggle = document.getElementById("navbarThemeToggle");
   const staffMenuToggle = document.getElementById("staffMenuToggle");
   const staffDropdown = document.getElementById("staffDropdown");
+  const logoutButton = document.querySelector(".logout-item");
 
   const savedTheme = localStorage.getItem(themeStorageKey);
 
@@ -122,6 +130,13 @@ document.addEventListener("DOMContentLoaded", () => {
         staffDropdown.classList.add("hidden");
         staffMenuToggle.setAttribute("aria-expanded", "false");
       }
+    });
+  }
+
+  if (logoutButton) {
+    logoutButton.addEventListener("click", () => {
+      localStorage.removeItem(authStorageKey);
+      window.location.replace("index.html");
     });
   }
 
