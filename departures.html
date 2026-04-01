@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HotelHub | Departures</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/departures.css" />
+</head>
+<body class="departures-page">
+  <div class="app-layout">
+    <main class="main-content">
+      <section class="departures-shell">
+        <div class="departures-panel">
+          <div class="departures-content-wrap">
+            <section class="departures-manifest">
+              <div class="departures-manifest__bar">
+                <div class="departures-manifest__title">
+                  <strong>Today's Departures</strong>
+                  <span id="departuresCount">0 departures</span>
+                </div>
+              </div>
+
+              <div class="table-wrapper departures-manifest__table">
+                <table class="data-table departures-table">
+                  <thead>
+                    <tr>
+                      <th>Guest</th>
+                      <th>Room</th>
+                      <th>Nights</th>
+                      <th>Departure</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="departuresTableBody"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <div id="departureDetailsModal" class="departure-details-modal hidden" aria-hidden="true">
+              <div id="departureDetailsBackdrop" class="departure-details-backdrop"></div>
+              <div class="departure-details-dialog" role="dialog" aria-modal="true" aria-labelledby="departureDetailsTitle">
+                <div class="departure-details-header">
+                  <div>
+                    <h2 id="departureDetailsTitle">Departure Details</h2>
+                    <p id="departureDetailsSubtitle">Current stay details.</p>
+                  </div>
+                  <div class="departure-details-header-actions">
+                    <button id="departurePrintReceiptBtn" class="secondary-btn" type="button">Print Receipt</button>
+                    <button id="departureDetailsClose" class="departure-details-close" type="button" aria-label="Close">×</button>
+                  </div>
+                </div>
+
+                <div class="departure-details-grid">
+                  <section class="departure-details-card">
+                    <h3>Guest</h3>
+                    <div class="departure-details-list">
+                      <div><span>Name</span><strong id="departureDetailsGuestName">--</strong></div>
+                      <div><span>Phone</span><strong id="departureDetailsPhone">--</strong></div>
+                      <div><span>Email</span><strong id="departureDetailsEmail">--</strong></div>
+                    </div>
+                  </section>
+
+                  <section class="departure-details-card">
+                    <h3>Stay</h3>
+                    <div class="departure-details-list">
+                      <div><span>Arrival</span><strong id="departureDetailsArrival">--</strong></div>
+                      <div><span>Departure</span><strong id="departureDetailsDeparture">--</strong></div>
+                      <div><span>Nights</span><strong id="departureDetailsNights">--</strong></div>
+                      <div><span>Room</span><strong id="departureDetailsRoom">--</strong></div>
+                      <div><span>Room Type</span><strong id="departureDetailsRoomType">--</strong></div>
+                    </div>
+                  </section>
+
+                  <section class="departure-details-card">
+                    <h3>Guests</h3>
+                    <div class="departure-details-list">
+                      <div><span>Adults</span><strong id="departureDetailsAdults">--</strong></div>
+                      <div><span>Children</span><strong id="departureDetailsChildren">--</strong></div>
+                      <div><span>Pets</span><strong id="departureDetailsPets">--</strong></div>
+                      <div><span>Vehicle</span><strong id="departureDetailsVehicle">--</strong></div>
+                    </div>
+                  </section>
+
+                  <section class="departure-details-card">
+                    <h3>Payment</h3>
+                    <div class="departure-details-list">
+                      <div><span>Rate</span><strong id="departureDetailsRate">--</strong></div>
+                      <div><span>Tax</span><strong id="departureDetailsTax">--</strong></div>
+                      <div><span>Total</span><strong id="departureDetailsTotal">--</strong></div>
+                      <div><span>Payment Type</span><strong id="departureDetailsPaymentType">--</strong></div>
+                      <div><span>Card</span><strong id="departureDetailsCard">--</strong></div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/global.js"></script>
+  <script src="js/departures.js"></script>
+</body>
+</html>

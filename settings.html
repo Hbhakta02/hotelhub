@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HotelHub | Settings</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/settings.css" />
+</head>
+<body class="settings-page">
+  <div class="app-layout">
+    <main class="main-content">
+      <section class="settings-shell">
+        <div class="settings-panel">
+          <div class="settings-page-header">
+            <div class="settings-page-copy">
+              <h1>Settings</h1>
+              <p>Manage room inventory, room numbers, and room types for HotelHub.</p>
+            </div>
+          </div>
+
+          <div class="settings-content-wrap">
+            <section class="settings-section">
+              <div class="settings-section-heading">
+                <h3>Room Type Pricing</h3>
+                <p>Set the default nightly rate for each room type used on reservations and walk-ins.</p>
+              </div>
+
+              <form class="settings-form-grid">
+                <div class="settings-grid settings-grid--pricing">
+                  <div class="form-field">
+                    <label for="settingsRateNsq">NS Q Rate</label>
+                    <input id="settingsRateNsq" data-room-type="NS Q" type="number" min="0" step="1" />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="settingsRateNsqq">NS QQ Rate</label>
+                    <input id="settingsRateNsqq" data-room-type="NS QQ" type="number" min="0" step="1" />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="settingsRateNsqqq">NS QQQ Rate</label>
+                    <input id="settingsRateNsqqq" data-room-type="NS QQQ" type="number" min="0" step="1" />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="settingsRateNsk">NS K Rate</label>
+                    <input id="settingsRateNsk" data-room-type="NS K" type="number" min="0" step="1" />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="settingsRateSmq">SM Q Rate</label>
+                    <input id="settingsRateSmq" data-room-type="SM Q" type="number" min="0" step="1" />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="settingsRateSmk">SM K Rate</label>
+                    <input id="settingsRateSmk" data-room-type="SM K" type="number" min="0" step="1" />
+                  </div>
+                </div>
+
+                <div class="settings-actions">
+                  <button id="settingsResetRatesBtn" type="button" class="secondary-btn">Reset Rates</button>
+                  <button id="settingsSaveRatesBtn" type="button" class="primary-btn">Save Rates</button>
+                </div>
+              </form>
+            </section>
+
+            <section class="settings-section">
+              <div class="settings-section-heading">
+                <h3>Room Setup</h3>
+                <p>Add, edit, or remove rooms used by the dashboard and in-house views.</p>
+              </div>
+
+              <form class="settings-form-grid">
+                <div class="settings-grid settings-grid--three">
+                  <div class="form-field">
+                    <label for="settingsRoomNumber">Room Number</label>
+                    <input id="settingsRoomNumber" type="text" />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="settingsRoomType">Room Type</label>
+                    <select id="settingsRoomType">
+                      <option value="NS Q">NS Q</option>
+                      <option value="NS QQ">NS QQ</option>
+                      <option value="NS QQQ">NS QQQ</option>
+                      <option value="NS K">NS K</option>
+                      <option value="SM Q">SM Q</option>
+                      <option value="SM K">SM K</option>
+                    </select>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="settingsRoomStatus">Default Status</label>
+                    <select id="settingsRoomStatus">
+                      <option value="clean">Clean</option>
+                      <option value="dirty">Dirty</option>
+                      <option value="occupied">Occupied</option>
+                      <option value="ooo">OOO</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="settings-actions">
+                  <button id="settingsClearBtn" type="button" class="secondary-btn">Clear</button>
+                  <button id="settingsSaveBtn" type="button" class="primary-btn">Add Room</button>
+                </div>
+              </form>
+            </section>
+
+            <section class="settings-section settings-section--table">
+              <div class="settings-section-heading">
+                <h3>Current Room List</h3>
+                <p>This inventory powers the dashboard, arrivals, departures, and in-house views.</p>
+              </div>
+
+              <div class="table-wrapper">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Room Number</th>
+                      <th>Room Type</th>
+                      <th>Nightly Rate</th>
+                      <th>Default Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/global.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>

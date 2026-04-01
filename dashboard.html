@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HotelHub | Dashboard</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body class="dashboard-page">
+  <div class="app-layout">
+    <main class="main-content">
+      <section class="dashboard-shell">
+        <div class="dashboard-panel">
+          <div class="dashboard-header">
+            <div class="dashboard-header-copy">
+              <h1>Dashboard</h1>
+              <p>Welcome back. Here’s today’s hotel overview.</p>
+            </div>
+
+            <div class="dashboard-header-actions">
+              <a class="dashboard-action-link" href="checkin.html?mode=walkin">Walk-In</a>
+              <a class="dashboard-action-link" href="checkin.html?mode=reservation">New Reservation</a>
+            </div>
+          </div>
+
+          <div class="dashboard-toolbar">
+            <div class="dashboard-month-nav">
+              <button id="dashboardMonthPrev" class="dashboard-month-btn" type="button">‹</button>
+              <h3 id="dashboardMonthLabel" class="dashboard-month-title">March 2026</h3>
+              <button id="dashboardMonthNext" class="dashboard-month-btn" type="button">›</button>
+            </div>
+
+            <div class="dashboard-top-stats">
+              <div class="dashboard-top-stat">
+                <span class="dashboard-top-stat__icon dashboard-top-stat__icon--vacant" aria-hidden="true">🚪</span>
+                <span class="dashboard-top-stat__label">Vacant</span>
+                <strong id="availableRooms">0</strong>
+              </div>
+
+              <div class="dashboard-top-stat">
+                <span class="dashboard-top-stat__icon dashboard-top-stat__icon--occupied" aria-hidden="true">🛏</span>
+                <span class="dashboard-top-stat__label">Occupied</span>
+                <strong id="occupiedRooms">0</strong>
+              </div>
+
+              <div class="dashboard-top-stat">
+                <span class="dashboard-top-stat__icon dashboard-top-stat__icon--dirty" aria-hidden="true">🧹</span>
+                <span class="dashboard-top-stat__label">Dirty</span>
+                <strong id="dirtyUnavailableRooms">0</strong>
+              </div>
+
+              <div class="dashboard-top-stat">
+                <span class="dashboard-top-stat__icon dashboard-top-stat__icon--ooo" aria-hidden="true">🔧</span>
+                <span class="dashboard-top-stat__label">OOO</span>
+                <strong id="oooRooms">0</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="room-calendar-wrapper">
+            <div id="dashboardCalendarHead" class="room-calendar-grid room-calendar-head"></div>
+            <div id="dashboardRoomRows"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/global.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

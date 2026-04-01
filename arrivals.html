@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HotelHub | Arrivals</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/arrivals.css" />
+</head>
+<body class="arrivals-page">
+  <div class="app-layout">
+    <main class="main-content">
+      <section class="arrivals-shell">
+        <div class="arrivals-panel">
+          <div class="arrivals-content-wrap">
+            <section class="arrivals-manifest">
+              <div class="arrivals-manifest__bar">
+                <div class="arrivals-manifest__title">
+                  <strong id="arrivalsDateLabel">Today's Arrivals</strong>
+                  <span id="arrivalsCount">0 reservations</span>
+                </div>
+                <div class="arrivals-manifest__controls">
+                  <button id="arrivalsTodayBtn" class="secondary-btn arrivals-manifest__today" type="button">Today</button>
+                  <div class="arrivals-date-field">
+                    <label for="arrivalsDate">Arrival Date</label>
+                    <input id="arrivalsDate" type="date" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="table-wrapper arrivals-manifest__table">
+                <table class="data-table arrivals-table">
+                  <thead>
+                    <tr>
+                      <th>Guest</th>
+                      <th>Arrival</th>
+                      <th>Departure</th>
+                      <th>Nights</th>
+                      <th>Room</th>
+                      <th>Price</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="arrivalsTableBody"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <div id="arrivalDetailsModal" class="arrival-details-modal hidden" aria-hidden="true">
+              <div id="arrivalDetailsBackdrop" class="arrival-details-backdrop"></div>
+              <div class="arrival-details-dialog" role="dialog" aria-modal="true" aria-labelledby="arrivalDetailsTitle">
+                <div class="arrival-details-header">
+                  <div>
+                    <h2 id="arrivalDetailsTitle">Arrival Details</h2>
+                    <p id="arrivalDetailsSubtitle">Full reservation details.</p>
+                  </div>
+                  <div class="arrival-details-header-actions">
+                    <button id="arrivalDetailsEdit" class="secondary-btn" type="button">Edit Details</button>
+                    <button id="arrivalDetailsSave" class="primary-btn hidden" type="button">Save Changes</button>
+                    <button id="arrivalDetailsClose" class="arrival-details-close" type="button" aria-label="Close">×</button>
+                  </div>
+                </div>
+
+                <div class="arrival-details-grid">
+                  <section class="arrival-details-card">
+                    <h3>Guest</h3>
+                    <div class="arrival-details-list">
+                      <div><span>Name</span><strong id="arrivalDetailsGuestName">--</strong></div>
+                      <div><span>Phone</span><strong id="arrivalDetailsPhone">--</strong></div>
+                      <div><span>Email</span><strong id="arrivalDetailsEmail">--</strong></div>
+                    </div>
+                  </section>
+
+                  <section class="arrival-details-card">
+                    <h3>Stay</h3>
+                    <div class="arrival-details-list">
+                      <div><span>Confirmation</span><strong id="arrivalDetailsConfirmation">--</strong></div>
+                      <div><span>Arrival</span><strong id="arrivalDetailsArrival">--</strong></div>
+                      <div><span>Departure</span><strong id="arrivalDetailsDeparture">--</strong></div>
+                      <div><span>Nights</span><strong id="arrivalDetailsNights">--</strong></div>
+                      <div><span>Room</span><strong id="arrivalDetailsRoom">--</strong></div>
+                      <div><span>Room Type</span><strong id="arrivalDetailsRoomType">--</strong></div>
+                    </div>
+                  </section>
+
+                  <section class="arrival-details-card">
+                    <h3>Guests</h3>
+                    <div class="arrival-details-list">
+                      <div><span>Adults</span><strong id="arrivalDetailsAdults">--</strong></div>
+                      <div><span>Children</span><strong id="arrivalDetailsChildren">--</strong></div>
+                      <div><span>Pets</span><strong id="arrivalDetailsPets">--</strong></div>
+                      <div><span>Vehicle</span><strong id="arrivalDetailsVehicle">--</strong></div>
+                    </div>
+                  </section>
+
+                  <section class="arrival-details-card">
+                    <h3>Payment</h3>
+                    <div class="arrival-details-list">
+                      <div><span>Rate</span><strong id="arrivalDetailsRate">--</strong></div>
+                      <div><span>Tax</span><strong id="arrivalDetailsTax">--</strong></div>
+                      <div><span>Total</span><strong id="arrivalDetailsTotal">--</strong></div>
+                      <div><span>Payment Type</span><strong id="arrivalDetailsPaymentType">--</strong></div>
+                      <div><span>Card</span><strong id="arrivalDetailsCard">--</strong></div>
+                    </div>
+                  </section>
+                </div>
+
+                <div id="arrivalEditPanel" class="arrival-edit-panel hidden">
+                  <div class="arrival-edit-grid">
+                    <div class="form-field">
+                      <label for="arrivalEditFirstName">First Name</label>
+                      <input id="arrivalEditFirstName" type="text" />
+                    </div>
+                    <div class="form-field">
+                      <label for="arrivalEditLastName">Last Name</label>
+                      <input id="arrivalEditLastName" type="text" />
+                    </div>
+                    <div class="form-field">
+                      <label for="arrivalEditPhone">Phone</label>
+                      <input id="arrivalEditPhone" type="text" />
+                    </div>
+                    <div class="form-field">
+                      <label for="arrivalEditEmail">Email</label>
+                      <input id="arrivalEditEmail" type="email" />
+                    </div>
+                    <div class="form-field">
+                      <label for="arrivalEditCheckIn">Arrival</label>
+                      <input id="arrivalEditCheckIn" type="date" />
+                    </div>
+                    <div class="form-field">
+                      <label for="arrivalEditCheckOut">Departure</label>
+                      <input id="arrivalEditCheckOut" type="date" />
+                    </div>
+                    <div class="form-field">
+                      <label for="arrivalEditRoomType">Room Type</label>
+                      <input id="arrivalEditRoomType" type="text" />
+                    </div>
+                    <div class="form-field">
+                      <label for="arrivalEditRoomNumber">Room Number</label>
+                      <input id="arrivalEditRoomNumber" type="text" />
+                    </div>
+                    <div class="form-field">
+                      <label for="arrivalEditAdults">Adults</label>
+                      <input id="arrivalEditAdults" type="number" min="1" />
+                    </div>
+                    <div class="form-field">
+                      <label for="arrivalEditChildren">Children</label>
+                      <input id="arrivalEditChildren" type="number" min="0" />
+                    </div>
+                    <div class="form-field">
+                      <label for="arrivalEditPets">Pets</label>
+                      <input id="arrivalEditPets" type="number" min="0" />
+                    </div>
+                    <div class="form-field">
+                      <label for="arrivalEditVehicle">Vehicle</label>
+                      <input id="arrivalEditVehicle" type="text" />
+                    </div>
+                    <div class="form-field">
+                      <label for="arrivalEditRate">Rate</label>
+                      <input id="arrivalEditRate" type="number" min="0" step="0.01" />
+                    </div>
+                    <div class="form-field">
+                      <label for="arrivalEditTaxRate">Tax Rate (%)</label>
+                      <input id="arrivalEditTaxRate" type="number" min="0" step="0.01" />
+                    </div>
+                    <div class="form-field">
+                      <label for="arrivalEditPaymentType">Payment Type</label>
+                      <input id="arrivalEditPaymentType" type="text" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/global.js"></script>
+  <script src="js/arrivals.js"></script>
+</body>
+</html>

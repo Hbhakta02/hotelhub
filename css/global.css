@@ -1,0 +1,353 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #bcbcbc;
+  --card: #d2d2d2;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #b8b8b8;
+  --primary: #1f2937;
+  --primary-hover: #111827;
+  --success-bg: #dcfce7;
+  --success-text: #166534;
+  --warning-bg: #fef3c7;
+  --warning-text: #92400e;
+  --danger-bg: #fee2e2;
+  --danger-text: #991b1b;
+  --info-bg: #cfcfcf;
+  --info-text: #374151;
+  --table-head: #f9fafb;
+  --panel-soft: #d2d2d2;
+  --shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+  --radius: 18px;
+}
+
+body.dark-mode {
+  --bg: #090a0a;
+  --card: #1f2020;
+  --text: #c0c0c7;
+  --muted: #94a3b8;
+  --border: #243041;
+  --primary: #c0c0c7;
+  --primary-hover: #d1d1d7;
+  --success-bg: rgba(34, 197, 94, 0.14);
+  --success-text: #86efac;
+  --warning-bg: rgba(245, 158, 11, 0.14);
+  --warning-text: #fcd34d;
+  --danger-bg: rgba(239, 68, 68, 0.14);
+  --danger-text: #fca5a5;
+  --info-bg: rgba(148, 163, 184, 0.18);
+  --info-text: #c0c0c7;
+  --table-head: #0b1220;
+  --panel-soft: #0b1220;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(148, 163, 184, 0.08), transparent 28%),
+    var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  padding: 32px;
+}
+
+.main-content > * {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--primary) 0%, #374151 100%);
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: 0 12px 24px rgba(17, 24, 39, 0.16);
+}
+
+.primary-btn:hover {
+  background: linear-gradient(135deg, var(--primary-hover) 0%, #1f2937 100%);
+  transform: translateY(-1px);
+}
+
+.secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  border-radius: 14px;
+  padding: 14px 20px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.secondary-btn:hover {
+  transform: translateY(-1px);
+  background: var(--panel-soft);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.badge.reserved {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.badge.checked-in,
+.badge.occupied {
+  background: var(--info-bg);
+  color: var(--info-text);
+}
+
+.badge.arriving {
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+
+.badge.cleaning {
+  background: var(--warning-bg);
+  color: var(--warning-text);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: var(--table-head);
+}
+
+th,
+td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.data-table td:last-child {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.data-table .primary-btn,
+.data-table .secondary-btn {
+  padding: 10px 14px;
+  min-height: 40px;
+  box-shadow: none;
+}
+
+.reservation-meta {
+  color: var(--muted);
+  margin-top: 6px;
+  font-size: 0.95rem;
+}
+
+.reservation-form-grid {
+  display: block;
+}
+
+.reservation-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.reservation-grid.one-col {
+  grid-template-columns: 1fr;
+}
+
+.reservation-grid.two-col {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.reservation-grid.three-col {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.reservation-grid.four-col {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-field label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font: inherit;
+}
+
+.form-field input[readonly] {
+  background: var(--panel-soft);
+  cursor: not-allowed;
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 88px;
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.reservation-card-section {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+  background: var(--panel-soft);
+}
+
+.reservation-card-section h4 {
+  margin-bottom: 14px;
+}
+
+.date-bar-group {
+  display: grid;
+  gap: 10px;
+}
+
+.date-bar {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: var(--card);
+  color: var(--text);
+  line-height: 1.45;
+}
+
+.reservation-footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+@media (max-width: 900px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .reservation-grid.two-col,
+  .reservation-grid.three-col,
+  .reservation-grid.four-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  th,
+  td {
+    font-size: 0.88rem;
+    padding: 12px 10px;
+  }
+
+  .data-table td:last-child {
+    align-items: stretch;
+  }
+
+  .data-table .primary-btn,
+  .data-table .secondary-btn {
+    width: 100%;
+  }
+
+  .reservation-footer-actions {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HotelHub | Receipt</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/receipt.css" />
+</head>
+<body class="receipt-page">
+  <div class="app-layout">
+    <main class="main-content">
+      <section class="receipt-shell">
+        <div class="receipt-panel">
+          <div class="receipt-header">
+            <div>
+              <h1 id="receiptTitle">Receipt</h1>
+              <p id="receiptSubtitle">Guest stay and card-on-file details.</p>
+            </div>
+            <button id="printReceiptBtn" type="button" class="receipt-print-btn">Print / Save PDF</button>
+          </div>
+
+          <div class="receipt-document">
+            <div class="receipt-document__top">
+              <div class="receipt-brand">
+                <strong>HotelHub</strong>
+                <span>Guest Receipt</span>
+              </div>
+              <div class="receipt-meta-box">
+                <div><span>Created</span><strong id="receiptCreatedAt">--</strong></div>
+                <div><span>Status</span><strong id="receiptStatus">--</strong></div>
+              </div>
+            </div>
+
+            <div class="receipt-grid">
+            <section class="receipt-card">
+              <h3>Guest</h3>
+              <div class="receipt-list">
+                <div><span>Name</span><strong id="receiptGuestName">--</strong></div>
+                <div><span>Phone</span><strong id="receiptPhone">--</strong></div>
+                <div><span>Email</span><strong id="receiptEmail">--</strong></div>
+              </div>
+            </section>
+
+            <section class="receipt-card">
+              <h3>Stay</h3>
+              <div class="receipt-list">
+                <div><span>Confirmation</span><strong id="receiptConfirmation">--</strong></div>
+                <div><span>Check-In</span><strong id="receiptCheckIn">--</strong></div>
+                <div><span>Check-Out</span><strong id="receiptCheckOut">--</strong></div>
+                <div><span>Room</span><strong id="receiptRoom">--</strong></div>
+                <div><span>Nights</span><strong id="receiptNights">--</strong></div>
+              </div>
+            </section>
+
+            <section class="receipt-card">
+              <h3>Payment</h3>
+              <div class="receipt-list">
+                <div><span>Type</span><strong id="receiptPaymentType">--</strong></div>
+                <div><span>Card</span><strong id="receiptCard">--</strong></div>
+                <div><span>Expiration</span><strong id="receiptExpiry">--</strong></div>
+              </div>
+            </section>
+
+            <section class="receipt-card">
+              <h3>Totals</h3>
+              <div class="receipt-list">
+                <div><span>Rate</span><strong id="receiptRate">--</strong></div>
+                <div><span>Tax</span><strong id="receiptTax">--</strong></div>
+                <div><span>Total</span><strong id="receiptTotal">--</strong></div>
+              </div>
+            </section>
+            </div>
+
+            <div class="receipt-footer-note">
+              <p>Present this receipt for your records. Use the browser print dialog to print or save as PDF.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/global.js"></script>
+  <script src="js/receipt.js"></script>
+</body>
+</html>

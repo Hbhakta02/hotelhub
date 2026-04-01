@@ -1,0 +1,389 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+:root {
+  --arrivals-bg: #bcbcbc;
+  --arrivals-text: #142033;
+  --arrivals-muted: #64748b;
+  --arrivals-divider: rgba(120, 120, 120, 0.22);
+  --arrivals-sheet: #d2d2d2;
+}
+
+body.dark-mode.arrivals-page {
+  --arrivals-bg: #090a0a;
+  --arrivals-text: #c0c0c7;
+  --arrivals-muted: #94a3b8;
+  --arrivals-divider: rgba(148, 163, 184, 0.14);
+  --arrivals-sheet: #1f2020;
+}
+
+body.arrivals-page {
+  height: 100vh;
+  overflow: hidden;
+  background: var(--arrivals-bg);
+}
+
+.arrivals-page .app-layout {
+  display: flex;
+  height: 100vh;
+}
+
+.arrivals-page .main-content {
+  flex: 1;
+  height: calc(100vh - 50px);
+  overflow: hidden;
+  padding: 14px;
+  box-sizing: border-box;
+}
+
+.arrivals-shell,
+.arrivals-panel {
+  height: 100%;
+}
+
+.arrivals-panel {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.arrivals-content-wrap {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 6px 4px 4px;
+}
+
+.arrivals-manifest {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 100%;
+}
+
+.arrivals-manifest__bar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px 16px;
+  background: var(--arrivals-sheet);
+  border: 1px solid var(--arrivals-divider);
+  border-radius: 22px;
+  border-bottom: 1px solid var(--arrivals-divider);
+  flex-wrap: wrap;
+  box-shadow: 0 12px 26px rgba(17, 24, 39, 0.05);
+}
+
+.arrivals-manifest__title {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.arrivals-manifest__title strong {
+  font-size: 1.2rem;
+  color: var(--arrivals-text);
+}
+
+.arrivals-manifest__title span:last-child {
+  font-size: 0.88rem;
+  color: var(--arrivals-muted);
+}
+
+.arrivals-manifest__controls {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.arrivals-date-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.arrivals-date-field label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--arrivals-text);
+}
+
+.arrivals-date-field input {
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 12px;
+  border: 1px solid #b8b8b8;
+  background: #d2d2d2;
+  color: var(--arrivals-text);
+  font: inherit;
+}
+
+body.dark-mode.arrivals-page .arrivals-date-field input {
+  border-color: rgba(148, 163, 184, 0.18);
+  background: #1f2020;
+  color: var(--arrivals-text);
+}
+
+.arrivals-manifest__today {
+  min-height: 40px;
+}
+
+.arrivals-manifest__table {
+  flex: 1;
+  margin-top: 0;
+  padding: 0;
+  background: var(--arrivals-sheet);
+  border: 1px solid var(--arrivals-divider);
+  border-radius: 22px;
+  overflow: auto;
+  box-shadow: 0 12px 26px rgba(17, 24, 39, 0.05);
+}
+
+.arrivals-page .arrivals-table {
+  background: transparent;
+}
+
+.arrivals-page .arrivals-table thead,
+.arrivals-page .arrivals-table thead tr {
+  background: var(--arrivals-bg) !important;
+}
+
+.arrivals-page .arrivals-table thead th {
+  background: var(--arrivals-bg) !important;
+}
+
+body.dark-mode.arrivals-page .arrivals-table thead,
+body.dark-mode.arrivals-page .arrivals-table thead tr,
+body.dark-mode.arrivals-page .arrivals-table thead th {
+  background: #1f2020 !important;
+}
+
+.arrivals-page .arrivals-table th,
+.arrivals-page .arrivals-table td {
+  border-bottom-color: var(--arrivals-divider);
+  color: var(--arrivals-text);
+}
+
+.arrivals-page .arrivals-table th {
+  color: var(--arrivals-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.arrivals-page .arrivals-table td:last-child {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.arrivals-page .arrivals-table td {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  font-size: 0.95rem;
+}
+
+.arrivals-price {
+  font-weight: 700;
+}
+
+.arrivals-empty {
+  color: var(--arrivals-muted);
+  font-size: 0.98rem;
+}
+
+.arrivals-page .primary-btn,
+.arrivals-page .secondary-btn {
+  padding: 9px 13px;
+}
+
+.arrival-details-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+}
+
+.arrival-details-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.38);
+}
+
+.arrival-details-dialog {
+  position: relative;
+  width: min(920px, calc(100vw - 32px));
+  max-height: calc(100vh - 40px);
+  margin: 20px auto;
+  overflow: auto;
+  padding: 20px;
+  border-radius: 24px;
+  border: 1px solid var(--arrivals-divider);
+  background: var(--arrivals-sheet);
+  box-shadow: 0 24px 44px rgba(17, 24, 39, 0.18);
+}
+
+.arrival-details-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.arrival-details-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.arrival-details-header h2 {
+  margin: 0;
+  color: var(--arrivals-text);
+}
+
+.arrival-details-header p {
+  margin: 6px 0 0;
+  color: var(--arrivals-muted);
+}
+
+.arrival-details-close {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--arrivals-divider);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--arrivals-text);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.arrival-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.arrival-details-card {
+  padding: 16px;
+  border: 1px solid var(--arrivals-divider);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+body.dark-mode.arrivals-page .arrival-details-card {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.arrival-details-card h3 {
+  margin: 0 0 12px;
+  color: var(--arrivals-text);
+}
+
+.arrival-details-list {
+  display: grid;
+  gap: 10px;
+}
+
+.arrival-details-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--arrivals-divider);
+}
+
+.arrival-details-list div:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.arrival-details-list span {
+  color: var(--arrivals-muted);
+  font-weight: 600;
+}
+
+.arrival-details-list strong {
+  color: var(--arrivals-text);
+  text-align: right;
+}
+
+.arrival-edit-panel {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--arrivals-divider);
+}
+
+.arrival-edit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.arrival-edit-grid .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.arrival-edit-grid .form-field label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--arrivals-text);
+}
+
+.arrival-edit-grid .form-field input {
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 12px;
+  border: 1px solid var(--arrivals-divider);
+  background: #d2d2d2;
+  color: var(--arrivals-text);
+  font: inherit;
+}
+
+body.dark-mode.arrivals-page .arrival-edit-grid .form-field input {
+  background: #1f2020;
+  border-color: rgba(148, 163, 184, 0.18);
+  color: var(--arrivals-text);
+}
+
+@media (max-width: 900px) {
+  .arrivals-content-wrap {
+    padding: 12px;
+  }
+
+  .arrivals-manifest__bar {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .arrivals-page .arrivals-table td:last-child {
+    flex-direction: column;
+  }
+
+  .arrivals-page .primary-btn,
+  .arrivals-page .secondary-btn {
+    width: 100%;
+  }
+
+  .arrival-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .arrival-edit-grid {
+    grid-template-columns: 1fr;
+  }
+}

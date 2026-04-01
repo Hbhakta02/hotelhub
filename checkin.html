@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HotelHub | Check-In</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/checkin.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+</head>
+<body class="reservations-page checkin-page">
+  <div class="app-layout">
+    <main class="main-content">
+      <section class="reservation-shell">
+        <div class="reservation-panel">
+          <div class="reservation-form-wrap">
+            <div class="checkin-toolbar">
+              <div class="checkin-toolbar__meta">
+                <span id="checkinModeBadge" class="checkin-mode-badge hidden">Reservation</span>
+                <h3 id="reservationMeta" class="reservation-meta-title">Confirmation #0000</h3>
+                <p id="reservationMetaDate" class="reservation-meta">Date Created: --/--/----</p>
+              </div>
+              <div class="checkin-mode-wrap">
+                <select id="checkinMode" class="checkin-mode-select">
+                  <option value="reservation">Reservation</option>
+                  <option value="walkin">Walk-In</option>
+                </select>
+              </div>
+            </div>
+
+            <form id="reservationForm" class="reservation-form-grid">
+              <div class="checkin-workspace">
+                <section class="checkin-section checkin-section--guest">
+                  <div class="reservation-section-heading">
+                    <h4><span class="reservation-section-icon">👤</span> Guest Details</h4>
+                    <p>Guest profile and contact information.</p>
+                  </div>
+
+                  <div class="guest-lookup-card">
+                    <div class="form-field">
+                      <label for="reservationGuestLookup">Repeat Guest Search</label>
+                      <input
+                        id="reservationGuestLookup"
+                        type="text"
+                        placeholder="Search by name, phone, or email"
+                        autocomplete="off"
+                      />
+                    </div>
+                    <div id="reservationGuestSelected" class="guest-selected hidden"></div>
+                    <div id="reservationGuestResults" class="guest-results hidden"></div>
+                  </div>
+
+                  <div class="checkin-subsection">
+                    <div class="reservation-grid four-col compact-grid guest-row-primary">
+                      <div class="form-field">
+                        <label for="firstName">First Name</label>
+                        <input id="firstName" type="text" />
+                      </div>
+
+                      <div class="form-field">
+                        <label for="lastName">Last Name</label>
+                        <input id="lastName" type="text" />
+                      </div>
+
+                      <div class="form-field">
+                        <label for="phone">Phone</label>
+                        <input id="phone" type="tel" />
+                      </div>
+
+                      <div class="form-field">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" />
+                      </div>
+                    </div>
+
+                    <div class="reservation-grid two-col compact-grid">
+                      <div class="form-field">
+                        <label for="address1">Address Line 1</label>
+                        <input id="address1" type="text" />
+                      </div>
+
+                      <div class="form-field">
+                        <label for="address2">Address Line 2</label>
+                        <input id="address2" type="text" />
+                      </div>
+                    </div>
+
+                    <div class="reservation-grid four-col compact-grid">
+                      <div class="form-field">
+                        <label for="city">City</label>
+                        <input id="city" type="text" />
+                      </div>
+
+                      <div class="form-field">
+                        <label for="state">State</label>
+                        <input id="state" type="text" />
+                      </div>
+
+                      <div class="form-field">
+                        <label for="zip">Zip Code</label>
+                        <input id="zip" type="text" />
+                      </div>
+
+                      <div class="form-field">
+                        <label for="country">Country</label>
+                        <input id="country" type="text" />
+                      </div>
+                    </div>
+
+                    <div class="reservation-grid two-col compact-grid">
+                      <div class="form-field">
+                        <label for="company">Company</label>
+                        <input id="company" type="text" />
+                      </div>
+
+                      <div class="form-field">
+                        <label for="remarks">Notes</label>
+                        <input id="remarks" type="text" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="checkin-subsection">
+                    <div class="reservation-grid three-col compact-grid">
+                      <div class="form-field">
+                        <label for="reservationIdType">ID Type</label>
+                        <select id="reservationIdType">
+                          <option selected>Driver License</option>
+                          <option>Passport</option>
+                          <option>State ID</option>
+                        </select>
+                      </div>
+
+                      <div class="form-field">
+                        <label for="reservationIdNumber">ID Number</label>
+                        <input id="reservationIdNumber" type="text" />
+                      </div>
+
+                      <div class="form-field">
+                        <label for="reservationVehicle">Vehicle / License Plate</label>
+                        <input id="reservationVehicle" type="text" />
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="checkin-section checkin-section--stay">
+                  <div class="reservation-section-heading">
+                    <h4><span class="reservation-section-icon">🗓</span> Stay Details</h4>
+                    <p>Dates, room selection, and pricing.</p>
+                  </div>
+
+                  <div class="reservation-grid three-col compact-grid stay-row-dates">
+                    <div class="form-field">
+                      <label for="checkInDate">Check-In Date</label>
+                      <input id="checkInDate" type="text" placeholder="YYYY-MM-DD" autocomplete="off" />
+                    </div>
+
+                    <div class="form-field">
+                      <label for="checkOutDate">Check-Out Date</label>
+                      <input id="checkOutDate" type="text" placeholder="YYYY-MM-DD" autocomplete="off" />
+                    </div>
+
+                    <div class="form-field">
+                      <label for="nights">Nights</label>
+                      <input id="nights" type="number" value="1" min="1" />
+                    </div>
+                  </div>
+
+                  <div class="reservation-grid three-col compact-grid stay-row-rateplan">
+                    <div class="form-field">
+                      <label for="rackRate">Rack Rate</label>
+                      <select id="rackRate">
+                        <option selected>BEST</option>
+                        <option>AAA</option>
+                        <option>AARP</option>
+                        <option>Senior</option>
+                        <option>Military</option>
+                        <option>DirectBill</option>
+                        <option>Government</option>
+                      </select>
+                    </div>
+
+                    <div class="form-field">
+                      <label for="roomType">Room Type</label>
+                      <select id="roomType">
+                        <option value="" selected>Choose a room type</option>
+                        <option value="NS Q">NS Q</option>
+                        <option value="NS QQ">NS QQ</option>
+                        <option value="NS QQQ">NS QQQ</option>
+                        <option value="NS K">NS K</option>
+                        <option value="SM Q">SM Q</option>
+                        <option value="SM K">SM K</option>
+                      </select>
+                    </div>
+
+                    <div class="form-field">
+                      <label for="roomNumber">Available Room</label>
+                      <select id="roomNumber">
+                        <option value="">Select a room</option>
+                      </select>
+                    </div>
+                    <input id="totalAmount" type="hidden" value="$0.00" />
+                  </div>
+
+                  <div class="reservation-grid three-col compact-grid stay-row-guests">
+                    <div class="form-field">
+                      <label for="reservationAdults">Adults</label>
+                      <input id="reservationAdults" type="number" value="1" min="1" />
+                      
+                    </div>
+
+                    <div class="form-field">
+                      <label for="reservationChildren">Children</label>
+                      <input id="reservationChildren" type="number" value="0" min="0" />
+                    </div>
+
+                    <div class="form-field">
+                      <label for="reservationPets">Pets</label>
+                      <input id="reservationPets" type="number" value="0" min="0" />
+                    </div>
+                  </div>
+
+                  <div class="reservation-grid two-col compact-grid stay-row-pricing">
+                    <div class="form-field">
+                      <label for="rate">Rate Per Night</label>
+                      <input id="rate" type="number" value="129" min="0" step="1" />
+                    </div>
+
+                    <div class="form-field">
+                      <label for="reservationTaxRate">Tax Rate (%)</label>
+                      <input id="reservationTaxRate" type="number" value="12" min="0" step="0.01" />
+                    </div>
+                  </div>
+                </section>
+
+                <section class="checkin-section reservation-section--payment">
+                  <div class="reservation-section-heading">
+                    <h4><span class="reservation-section-icon">💳</span> Payment</h4>
+                    <div class="payment-card-actions">
+                      <button id="viewReceiptBtn" type="button" class="secondary-btn">View Receipt</button>
+                    </div>
+                    <p>Payment method and card details.</p>
+                  </div>
+
+                  <div class="payment-inline-grid">
+                    <div class="form-field payment-inline-field">
+                      <label for="paymentType">Payment Type</label>
+                      <select id="paymentType">
+                        <option selected>Visa</option>
+                        <option>Mastercard</option>
+                        <option>Amex</option>
+                        <option>Discover</option>
+                        <option>Cash</option>
+                      </select>
+                    </div>
+
+                    <div id="reservationCardNumberRow" class="form-field payment-inline-field">
+                      <label for="cardNumber">Card Number</label>
+                      <input id="cardNumber" type="text" inputmode="numeric" placeholder="1234-5678-9012-3456" maxlength="19" />
+                    </div>
+
+                    <div id="reservationExpiryRow" class="form-field payment-inline-field payment-inline-field--compact">
+                      <label for="expiry">Expiration</label>
+                      <input id="expiry" type="text" inputmode="numeric" placeholder="MM/YY" maxlength="5" />
+                    </div>
+                  </div>
+                </section>
+              </div>
+
+              <section class="checkin-section checkin-section--summary-card checkin-section--summary-full">
+                <div class="reservation-section-heading">
+                  <h4><span class="reservation-section-icon">🛏</span> Stay Summary</h4>
+                  <p id="checkinSummaryDescription">Final stay snapshot before saving the reservation.</p>
+                </div>
+
+                <div class="reservation-card-section">
+                  <div class="date-bar-group summary-group summary-group--stay">
+                    <div class="date-bar"><strong>In:</strong> <span id="staySummaryIn">--</span></div>
+                    <div class="date-bar"><strong>Out:</strong> <span id="staySummaryOut">--</span></div>
+                    <div class="form-field">
+                      <div class="date-bar"><strong>Room:</strong> <span id="staySummaryRoom">Not Assigned</span></div>
+                    </div>
+                  </div>
+
+                  <div class="date-bar-group summary-group summary-group--pricing">
+                    <div class="date-bar"><strong>Subtotal:</strong> <span id="staySummarySubtotal">$0.00</span></div>
+                    <div class="date-bar"><strong>Tax:</strong> <span id="staySummaryTax">$0.00</span></div>
+                    <div class="date-bar"><strong>Total:</strong> <span id="staySummaryTotal">$0.00</span></div>
+                  </div>
+                </div>
+              </section>
+
+              <div class="reservation-footer-actions reservation-footer-actions--shared">
+                <button id="saveReservationBtn" type="button" class="primary-btn">Save Reservation</button>
+                <button id="cancelReservationBtn" type="button" class="secondary-btn">Clear Form</button>
+              </div>
+            </form>
+
+            <p id="reservationFeedback" class="reservation-feedback hidden" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="js/global.js"></script>
+  <script src="js/checkin.js"></script>
+</body>
+</html>
